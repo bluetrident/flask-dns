@@ -1,5 +1,7 @@
-from flask.ext.wtf import Form, TextField, SubmitField
+from flask_wtf import Form
+from wtforms import TextField, SubmitField
+from wtforms.validators import DataRequired
 
 class ContactForm(Form):
-    ipaddr = TextField("ipaddr")
-    submit = SubmitField("Lookup")
+    ipaddr = TextField('IP Address', validators=[DataRequired()])
+    submit = SubmitField('Lookup')

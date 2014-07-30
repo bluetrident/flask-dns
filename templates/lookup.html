@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-
     <h2>Reverse IP Address Lookup</h2>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    
+    <form action="{{ url_for('lookup') }}" method=post>
+        {{ form.hidden_tag() }}
+        {{ form.ipaddr.label }}
+        {{ form.ipaddr(size=20) }}
+        
+        {{ form.submit }}
+    </form>       
 
 {% endblock %}
