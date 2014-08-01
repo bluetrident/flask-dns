@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash
 from forms import ContactForm
 import dns.reversename
+import socket
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ def lookup():
     form = ContactForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            revname = str(dns.reversename.from_address(request.form['ipaddr']))
+            revname = str(dns.reversename.from_address(request.form['ipaddr'])) + "<br />" + socket.getfqdn(request.form['ipaddr'])
             return revname
         else:
             flash('IP address is required.')
