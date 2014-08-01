@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h2>Reverse IP Address Lookup</h2>
-    {% for message in get_flashed_messages() %}
+    {% for message in form.ipaddr.errors %}
         <div class="flash">{{ message }}</div>
     {% endfor %}
     
