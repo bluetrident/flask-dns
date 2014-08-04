@@ -1,16 +1,11 @@
-{% extends "layout.html" %}
-{% block content %}
-    <h2>Reverse IP Address Lookup</h2>
-    {% for message in form.ipaddr.errors %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>Reverse IP Address Lookup</h1>
+    </div>
     
-    <form action="{{ url_for('lookup') }}" method=post>
-        {{ form.hidden_tag() }}
-        {{ form.ipaddr.label }}
-        {{ form.ipaddr(size=20) }}
-        
-        {{ form.submit }}
-    </form>       
+    {{ wtf.quick_form(form) }}
 
 {% endblock %}

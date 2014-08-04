@@ -18,7 +18,6 @@ def lookup():
             revname = str(dns.reversename.from_address(request.form['ipaddr'])) + "<br />" + socket.getfqdn(request.form['ipaddr'])
             return revname
         else:
-            flash('IP address is required.')
             return render_template('lookup.html', form=form)
                  
     elif request.method == 'GET':
